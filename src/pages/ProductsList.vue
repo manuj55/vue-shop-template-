@@ -2,8 +2,9 @@
   <section>
     <ul>
       <product-item v-for="product in products" :key="product.id" :product="product" :descrption="product.descrption"
-        :price="product.price" :title="product.title" :image="product.image" />
+        :price="product.price" :title="product.title" :image="product.image" :id="product.id">
 
+      </product-item>
       <!-- <ProductItem
       v-for="product in products"
       :key="product.id"

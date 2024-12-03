@@ -5,7 +5,9 @@
         <img :src="image" :alt="title" />
       </div>
       <div class="product__text">
-        <h3>{{ title }}</h3>
+        <router-link :to="`/products/${id}`">
+          <h3>{{ title }}</h3>
+        </router-link>
         <div class="product__price">
           <!--Todo: WithBaseBadge -->
           $
@@ -21,6 +23,7 @@
 </template>
 
 <script>
+
 export default {
   props: ["id", "image", "title", "price", "description"],
 };
