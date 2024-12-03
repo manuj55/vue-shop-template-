@@ -32,7 +32,20 @@ export default {
       state.qty++;
       state.total += productData.price;
 
+    },
+    removeFromCart(state, payload) {
+      const identifyIdex = state.items.findIndex(prod => prod.productId === payload);
+
+      const prodData = state.items[identifyIdex];
+
+      state.items.splice(identifyIdex, 1);
+      state.qty -= prodData.qty;
+      state.total -= prodData.price * prodData.qty;
+
+
     }
+
+
   },
   actions: {
     addToCart(state, payload) {
@@ -43,6 +56,12 @@ export default {
       const foundProduct = products.find((prod) => prod.id === prodId);
       //call mutation to add to cart
       state.commit("addProductToCart", foundProduct);
+    },
+
+    deleteProduct(state, payload) {
+      const prodId = payload.id;
+      //call mutation to add to cart
+      state.commit("removeFromCart", prodId);
     }
   },
   getters: {},
