@@ -1,11 +1,32 @@
 <template>
   <section>
-    <h1>Product Lists</h1>
+    <ul>
+      <product-item v-for="product in products" :key="product.id" :product="product" :descrption="product.descrption"
+        :price="product.price" :title="product.title" :image="product.image" />
+
+      <!-- <ProductItem
+      v-for="product in products"
+      :key="product.id"
+      :product="product"
+    /> -->
+    </ul>
   </section>
 </template>
 
 <script>
-export default {};
+import ProductItem from "../components/products/ProductItem.vue";
+
+export default {
+  components: {
+    ProductItem,
+  },
+  computed: {
+    products() {
+      //if we are assesing the prods module we can use this getter syntax to get the products
+      return this.$store.getters["prods/products"];
+    },
+  },
+};
 </script>
 
 <style scoped>

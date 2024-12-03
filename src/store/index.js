@@ -1,6 +1,10 @@
 import { createStore } from "vuex";
+import productsModule from "./modules/product";
 
 const store = createStore({
+    modules: {
+        prods: productsModule,
+    },
     state() {
         return {
             isLoggedIn: false,
