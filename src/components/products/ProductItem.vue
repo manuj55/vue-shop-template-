@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="product__actions">
-      <button>Add to Cart</button>
+      <button @click="addToCart">Add to Cart</button>
     </div>
   </li>
 </template>
@@ -26,6 +26,15 @@
 
 export default {
   props: ["id", "image", "title", "price", "description"],
+  methods: {
+    addToCart() {
+      this.$store.dispatch("cart/addToCart", {
+        id: this.id,
+        title: this.title,
+        price: this.price,
+      });
+    },
+  },
 };
 </script>
 
